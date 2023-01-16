@@ -1,0 +1,12 @@
+body {
+    font-family: Quicksand, sans-serif;
+    text-align: center;
+    padding-top: 10%;
+}
+img:hover {
+    -webkit-transform: scale(3.5,3.5);
+}
+table {
+    margin: auto;
+    width: 40%;
+}
