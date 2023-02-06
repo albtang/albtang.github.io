@@ -6,7 +6,7 @@
 
 <body>
 <h1>Hi! My name is Albert</h1>
-<p>I like <a href="./sunsets.html">sunsets</a>.</p>
+<p id="sunsetBlurb"></p>
 
 <div>
     Now you may be wondering where I work. I work <a href="./wheredoiwork.html">here</a>
@@ -15,5 +15,15 @@
 <div>
     Once upon a time, I took graphic design class. This is my <a href="https://iamthetang.wordpress.com/">showcase</a> for that class. It's not much but it's honest work.
 </div>
+
+<script type="text/javascript">
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    var element = document.getElementById('sunsetBlurb');
+    if (isMobile) {
+        element.innerHTML = "I like <a href=\"./msunsets.html\">sunsets</a>.";
+    } else {
+        element.innerHTML = "I like <a href=\"./sunsets.html\">sunsets</a>.";
+    }
+</script>
 
 </body>
