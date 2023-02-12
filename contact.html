@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+<link rel="stylesheet" href="./style.css">
+
+<h1>
+    Contact me
+</h1>
+<p>
+    Not really sure why you would want to, but feel free to input your phone number below and I'll get back to you.
+</p>
+<p>
+    Phone number: <span id="counter">(000) 000-0000</span>
+    <button id="counterBtn">+</button>
+</p>
+<button id="submit">Submit contact information</button>
+
+<script type="text/javascript">
+  const btn = document.querySelector("#counterBtn");
+  const counter = document.querySelector("#counter");
+  let count = 0;
+
+  function fixedWidthNumber(number, width) {
+    let output = [];
+    for (let i = 0; i < width; i++) {
+        let t = number;
+        if (i != 0) {
+            t = Math.floor(number / (10 ** i));
+        }
+        t = t % 10;
+        output.unshift(t);
+    }
+    return output.join("");
+  }
+  
+  btn.addEventListener("click", function() {
+    count++;
+    if (count >= 9999999999) {
+        count = 0;
+    }
+    let areaCode = Math.floor(count / 10000000);
+    let first = Math.floor(count / 10000) % 1000;
+    let second = count % 10000;
+    counter.innerHTML = [
+        "(",
+        fixedWidthNumber(areaCode, 3),
+        ") ",
+        fixedWidthNumber(first, 3),
+        "-",
+        fixedWidthNumber(second, 4)].join("");
+  });
+</script>
