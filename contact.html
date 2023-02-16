@@ -24,10 +24,7 @@
   function fixedWidthNumber(number, width) {
     let output = [];
     for (let i = 0; i < width; i++) {
-        let t = number;
-        if (i != 0) {
-            t = Math.floor(number / (10 ** i));
-        }
+        let t = Math.floor(number / (10 ** i));
         t = t % 10;
         output.unshift(t);
     }
