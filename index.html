@@ -13,7 +13,6 @@
 <h1>Hi! My name is Albert</h1>
 <p id="sunsetBlurb"></p>
 <p id="parksBlurb"></p>
-<p>I'm also a fan of <a href="./parks.html">national parks</a>.</p>
 
 <div>
     Now you may be wondering where I work. I work <a href="./wheredoiwork.html">here</a>
@@ -27,7 +26,7 @@
 <script type="text/javascript">
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     var sunsetElement = document.getElementById('sunsetBlurb');
-    var parksElement = document.getElementById('parksBlurb')
+    var parksElement = document.getElementById('parksBlurb');
     if (isMobile) {
         sunsetElement.innerHTML = "I like <a href=\"./msunsets.html\">sunsets</a>.";
         parksElement.innerHTML = "I'm also a fan of <a href=\"./mparks.html\">national parks</a>.";
