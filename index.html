@@ -27,13 +27,14 @@
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     var sunsetElement = document.getElementById('sunsetBlurb');
     var parksElement = document.getElementById('parksBlurb');
+    var sunsetPage = "./sunsets.html";
+    var parksPage = "./parks.html";
     if (isMobile) {
-        sunsetElement.innerHTML = "I like <a href=\"./msunsets.html\">sunsets</a>.";
-        parksElement.innerHTML = "I'm also a fan of <a href=\"./mparks.html\">national parks</a>.";
-    } else {
-        sunsetElement.innerHTML = "I like <a href=\"./sunsets.html\">sunsets</a>.";
-        parksElement.innerHTML = "I'm also a fan of <a href=\"./parks.html\">national parks</a>.";
+        sunsetPage = "./msunsets.html";
+        parksPage = "./mparks.html";
     }
+    sunsetElement.innerHTML = `I like <a href=\"${sunsetPage}\">sunsets</a>.`;
+    parksElement.innerHTML = `I'm also a fan of <a href=\"${parksPage}\">national parks</a>.`;
 </script>
 
 </body>
