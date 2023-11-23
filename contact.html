@@ -18,13 +18,28 @@
 <p>
     Phone number: <span id="counter">(000) 000-0000</span>
     <button id="counterBtn">+</button>
+    <button id="randomBtn">random</button>
 </p>
 <button type="button" id="submit" onclick="console.log('This button does not actually do anything lol')">Submit contact information</button>
 
 <script type="text/javascript">
-  const btn = document.querySelector("#counterBtn");
+  const counterBtn = document.querySelector("#counterBtn");
+  const randomBtn = document.querySelector("#randomBtn");
   const counter = document.querySelector("#counter");
-  let count = 0;
+  let num = 0;
+
+  function updatePhoneNumber(num) {
+    let areaCode = Math.floor(num / 10000000);
+    let first = Math.floor(num / 10000) % 1000;
+    let second = num % 10000;
+    counter.innerHTML = [
+        "(",
+        fixedWidthNumber(areaCode, 3),
+        ") ",
+        fixedWidthNumber(first, 3),
+        "-",
+        fixedWidthNumber(second, 4)].join("");
+  }
 
   function fixedWidthNumber(number, width) {
     let output = [];
@@ -36,20 +51,16 @@
     return output.join("");
   }
   
-  btn.addEventListener("click", function() {
-    count++;
-    if (count >= 9999999999) {
-        count = 0;
+  counterBtn.addEventListener("click", function() {
+    num++;
+    if (num >= 9999999999) {
+        num = 0;
     }
-    let areaCode = Math.floor(count / 10000000);
-    let first = Math.floor(count / 10000) % 1000;
-    let second = count % 10000;
-    counter.innerHTML = [
-        "(",
-        fixedWidthNumber(areaCode, 3),
-        ") ",
-        fixedWidthNumber(first, 3),
-        "-",
-        fixedWidthNumber(second, 4)].join("");
+    updatePhoneNumber(num);
   });
+
+  randomBtn.addEventListener("click", function() {
+    num = Math.floor(Math.random() * 9999999999);
+    updatePhoneNumber(num);
+  })
 </script>
