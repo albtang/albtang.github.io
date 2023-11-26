@@ -28,7 +28,7 @@
   const counter = document.querySelector("#counter");
   let num = 0;
 
-  function updatePhoneNumber(num) {
+  function updatePhoneNumber() {
     let areaCode = Math.floor(num / 10000000);
     let first = Math.floor(num / 10000) % 1000;
     let second = num % 10000;
@@ -56,11 +56,11 @@
     if (num >= 9999999999) {
         num = 0;
     }
-    updatePhoneNumber(num);
+    updatePhoneNumber();
   });
 
   randomBtn.addEventListener("click", function() {
     num = Math.floor(Math.random() * 9999999999);
-    updatePhoneNumber(num);
+    updatePhoneNumber();
   })
 </script>
