@@ -53,7 +53,7 @@
   
   counterBtn.addEventListener("click", function() {
     num++;
-    if (num >= 9999999999) {
+    if (num > 9999999999) {
         num = 0;
     }
     updatePhoneNumber();
