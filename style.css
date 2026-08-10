@@ -11,10 +11,69 @@ table {
     width: 40%;
     padding-top: 5%;
 }
+
+.parks-page {
+    margin: 0;
+    padding: 3rem 1rem 2rem;
+}
+
+.parks-page .parks-gallery {
+    margin: 2rem auto 0;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.parks-page .park-card {
+    margin: 0;
+}
+
+.parks-page .park-card a {
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.parks-page .park-card img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+.parks-page .park-card figcaption {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.parks-page .park-card a:focus-visible {
+    outline: 3px solid #0b5ed7;
+    outline-offset: 4px;
+}
+
 .icon {
     text-align: right;
     padding-bottom: 0%;
 }
 button {
     font-family: Quicksand;
+}
+
+@media (max-width: 900px) {
+    .parks-page .parks-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .parks-page {
+        padding-top: 1.5rem;
+    }
+
+    .parks-page .parks-gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.25rem;
+    }
 }

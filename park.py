@@ -3,19 +3,22 @@ import os
 PRE = """
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
-<link rel="stylesheet" href="./style.css">
-
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Parks</title>
     <link rel="icon" href="./images/sunsets/sunset.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
-<h1>National Parks!</h1>
-<p>I enjoy touching grass, and I've been to a few national parks. Here are some of my favorite scenes I've photographed.</p>
+<body class="parks-page">
+    <h1>National Parks!</h1>
+    <p>I enjoy touching grass, and I've been to a few national parks. Here are some of my favorite scenes I've photographed.</p>
+
+    <main>
+        <section aria-label="Photo gallery of national parks" class="parks-gallery">
+
 """
 
 def get_parks():
@@ -44,24 +47,20 @@ def get_title(park: str) -> str:
 def generate_html():
     parks = get_parks()
     html = PRE
-    html += '<table>\n'
-    for i in range(0, len(parks), 3):
-        html += '    <tr>\n'
-        for j in range(3):
-            if i + j < len(parks):
-                park = parks[i + j]
-                fullsize_url = get_fullsize_URL(park)
-                thumbnail_url = get_thumbnail_URL(park)
-                html += f'        <td><a href="{fullsize_url}"><img src="{thumbnail_url}" height="240"></a></td>\n'
-        html += '    </tr>\n'
-        html += '    <tr>\n'
-        for j in range(3):
-            if i + j < len(parks):
-                park = parks[i + j]
-                html += f'        <td>{get_title(park)}</td>\n'
-        html += '    </tr>\n'
-    html += '</table>\n'
-    html += '</body>\n</html>'
+    tab = '    '
+    for park in parks:
+        html += 3 * tab + '<figure class="park-card">\n'
+        fullsize_url = get_fullsize_URL(park)
+        thumbnail_url = get_thumbnail_URL(park)
+        title = get_title(park)
+        html += 4 * tab + f'<a href="{fullsize_url}">\n'
+        html += 5 * tab + f'<img src="{thumbnail_url}" width="240" height="240" loading="lazy" decoding="async" alt="{title}">\n'
+        html += 4 * tab + f'</a>\n'
+        html += 4 * tab + f'<figcaption>{title}</figcaption>\n'
+        html += 3 * tab + '</figure>\n'
+    html += 2 * tab + '</section>\n'
+    html += tab + '</main>\n'
+    html += '</body>\n</html>\n'
     return html
 
 with open('parks.html', 'w') as f:
